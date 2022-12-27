@@ -12,3 +12,103 @@
   font-size: 40px;
   font-weight: 200;
 }
+
+
+
+.App {
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  /* color: rgb(110, 121, 133); */
+  color:rgb(70, 78, 86);
+  /* background-image: linear-gradient(79deg, #7439db, #C66FBC 48%, #F7944D); */
+  background-color: rgb(219, 230, 245);
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@media screen and (min-width: 600px) {
+  .auth-form-container {
+    padding: 3rem;
+    border: 1px solid white;
+    background-color: rgb(255, 255, 254);
+    border-radius: 15px;
+    margin: 0.5rem;
+  }
+}
+
+
+
+.auth-form-container , .login-form, .register-form{
+  display:flex;
+  flex-direction: column;  
+}
+
+.form-inputs{
+  border:  1px solid grey;
+  margin: 5px;
+}
+
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+input {
+  /* margin: 1px; */
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.login-btn, .register-btn,.githubLogin{
+  margin: 1.5rem 0;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  cursor:pointer;
+  color: white;
+  font-weight: 500;
+}
+.login-btn, .register-btn{
+  background-color:rgb(167, 180, 196);
+}
+.login-btn:hover, .register-btn:hover{
+  background-color:rgb(126, 143, 160);
+}
+
+
+.link-btn{
+  border: none;
+  background:none ;
+  color:rgb(70, 78, 86);
+  text-decoration: underline;
+  padding: 30px;
+  padding-bottom: 0px;
+  border-radius: 10px;
+  cursor:pointer;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+input {
+  padding: 10px;
+  font-size: 1.2em;
+}
+.githubLogin{
+  background-color:rgb(142, 90, 147);
+} 
