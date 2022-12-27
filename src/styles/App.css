@@ -1,4 +1,21 @@
 .App {
+  background: rgb(75, 125, 191);
+  height: 100vh;
+}
+
+.Header {
+  background: rgba(0, 0, 0, 0.15);
+  color: white;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  text-align: center;
+  font-size: 40px;
+  font-weight: 200;
+}
+
+
+
+.App {
   text-align: center;
   display: flex;
   min-height: 100vh;
@@ -95,19 +112,3 @@ input {
 .githubLogin{
   background-color:rgb(142, 90, 147);
 } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
