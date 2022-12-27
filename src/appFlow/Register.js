@@ -14,7 +14,7 @@ export default function Register() {
         console.log("entered func")
         e.preventDefault();
         try {
-            let res = await fetch(serverAddress + "/register", {
+            let res = await fetch(`${serverAddress}/register`, {
                 method: 'POST',
                 body: JSON.stringify({
                     username: username,
@@ -31,7 +31,6 @@ export default function Register() {
             setEmail("");
             setPassword("");
             if (res.ok) {
-                window.alert("email activation was sent, please check your email");
                 navigate("/login")
                 //props.onFormSwitch('login');
             } else {

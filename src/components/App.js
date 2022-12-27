@@ -4,6 +4,7 @@ import Board from "./Board";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "../appFlow/Register"
 import { GithubUserToServer } from '../appFlow/githubRegister';
+import { Login } from "../appFlow/Login";
 
 class App extends Component {
   render() {
@@ -12,9 +13,10 @@ class App extends Component {
               <div className="Header">Project</div>
     <Router>
       <Routes>
-       // <Route exact path="/register" element={<Register />} />
+        <Route exact path="/register" element={<Register />} />
         <Route exact path="/board" element={<Board />} />
         <Route path="/registerWithGithub"  element={<GithubUserToServer/>}/>
+        <Route exact path="/login" element={<Login />} />
       </Routes>
     </Router>
       </div>
