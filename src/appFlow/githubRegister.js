@@ -18,7 +18,7 @@ export  function GithubUserToServer() {
             if (response.ok){
                 const token=await response.text();
                 localStorage.setItem("token",token)
-                navigate("/")
+                navigate("/board")
             }
             else {
                 window.alert("An error occurred while trying to connect to github.")
