@@ -11,44 +11,45 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.taskPresent {
+.task {
   border: 1px solid #ccc;
   padding: 20px;
   margin-bottom: 20px;
 }
 
-.taskPresent h3 {
+.taskForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.taskTitle {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.taskPresent p {
+.taskDescription {
   font-size: 14px;
-  margin-bottom: 5px;
-}
-.taskForm {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 20px;
 }
 
-.taskForm input[type="text"],
-.taskForm textarea {
-  border: 1px solid #ccc;
-  padding: 10px;
-  font-size: 14px;
+.taskDetails {
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
 }
 
-.taskForm input[type="submit"] {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+.taskDueDate,
+.taskStatus {
+  font-size: 14px;
+  margin-right: 20px;
 }
 
-.taskForm input[type="submit"]:hover {
-  background-color: #45a049;
+.taskDueDate {
+  font-style: italic;
+}
+
+.taskStatus {
+  font-weight: bold;
 }

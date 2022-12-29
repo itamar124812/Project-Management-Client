@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Form, useParams } from "react-router-dom";
+import { Form, useParams,useNavigate } from "react-router-dom";
 import { getBoard, createTask } from "../rest"
-
+import {Task}  from "./Task";
 export const Board = (props) => {
 
   const [tasks, setTasks] = useState([]);
@@ -9,7 +9,7 @@ export const Board = (props) => {
   const [statuses, setStatuses] = useState([]);
   const [TaskTypes, setTaskTypes] = useState([]);
   const { boardId } = useParams();
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function init() {
@@ -38,12 +38,13 @@ export const Board = (props) => {
               <div className="taskDetails">
                 <p className="taskDueDate">Due date: {task.dueDate}</p>
                 <p className="taskStatus">Status: {task.status}</p>
+                <p className="taskStatus">Status: {task.type}</p>
               </div>
             </form>
           </div>
         </li>
       )}</ul>
-      <button onClick={() => createTask()}>add new task</button>
+      <button onClick={() => Task(boardId)}>add new task</button>
       <button>filter</button>
     </div>
   )

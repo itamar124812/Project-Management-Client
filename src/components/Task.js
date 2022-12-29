@@ -2,11 +2,11 @@ import React, { useState,useEffect } from "react";
 import {createTask, getBoard} from "../rest"
 
 
- export const  Task =() =>{
+ export const  Task = (boardIdarg) =>{
 const [title, setTitle] =  useState('');
 const [description, setDescription] = useState('');
 const [importance, setImportance] = useState(0);
-const [boardId, setBoardId] = useState(1);
+const [boardId, setBoardId] = useState(boardIdarg);
 
     const handleSubmit  = async(e) => {
     e.preventDefault();
