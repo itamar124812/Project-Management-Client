@@ -1,6 +1,6 @@
 import {useState,useEffect} from "react";
 import {useParams} from "react-router-dom";
-import {getBoard} from "../rest"
+import {getBoard,createTask} from "../rest"
 
  export const  Board =(props) =>{
 
@@ -12,13 +12,25 @@ const {boardId} = useParams();
 
     useEffect(() => {
         async function init() {
-        let users = await getBoard(boardId); 
+        let board = await getBoard(boardId); 
+        console.log(board);
+        setTasks(board.tasks);
         } 
         init();
+
        
     }, []);
-        console.log(boardId)
 
+useEffect(() => {
+    console.log(tasks);
+    }, [tasks]);
 
+   return (
+                <div>
+                <h1>Hello</h1>
+                <button onClick={() =>createTask()}>add new task</button>
+                <button>filter</button>
+                </div>
+    )
 }
 
