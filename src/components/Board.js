@@ -47,5 +47,6 @@ export const Board = (props) => {
       <button>filter</button>
     </div>
   )
+
 }
 
