@@ -85,20 +85,25 @@ let resBody = await res.json();
 }
 
 
- function addItem(task){
-    // console.log("add item");
-    //   return fetch(serverAddress + "/board/send?reciverName="+username, {
-    //     method: 'POST',
-    //     body: messageBody,
-    //     headers: {
-    //         'Content-Type': 'text/plain',
-    //     }
-    // }).then(Response => {
-    //     if (Response.ok) {
-    //         console.log(Response.body);
-    //         return Response.text();
-    //     }
-    // }).then(result => result);
+ function createTask(task){
+   let token = getToken();
+  return fetch(serverAddress + "/task/addTask", {
+    method: "Post",
+     headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `bearer ${token}`,
+        'boardId':task.boardId
+      }
+    ,body:task
+  })
+    .then(function (response) {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then(function (data) {
+      return data;
+    });
  }
 
 
@@ -106,4 +111,4 @@ let resBody = await res.json();
 
 
 
-export{createBoard,login,register,addItem,getBoard}
+export{createBoard,login,register,createTask,getBoard}
