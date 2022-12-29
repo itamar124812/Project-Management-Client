@@ -1,78 +1,55 @@
 import "../styles/Board.css";
-
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { Link, useNavigate } from "react-router-dom";
+import {createBoard,addItem} from "../rest"
+import { useState, useEffect } from "react";
+import { serverAddress } from "../constants"
 
-import List from "./List";
-import AddList from "./AddList";
 
-class Board extends Component {
-  state = {
-    addingList: false
-  };
 
-  toggleAddingList = () =>
-    this.setState({ addingList: !this.state.addingList });
+export const Board = () => {
+        const navigate = useNavigate();
 
-  handleDragEnd = ({ source, destination, type }) => {
-    // dropped outside the allowed zones
-    if (!destination) return;
 
-    const { dispatch } = this.props;
+      const [boardName, setBoardName] = useState("");
 
-    // Move list
-    if (type === "COLUMN") {
-      // Prevent update if nothing has changed
-      if (source.index !== destination.index) {
-        dispatch({
-          type: "MOVE_LIST",
-          payload: {
-            oldListIndex: source.index,
-            newListIndex: destination.index
-          }
-        });
-      }
-      return;
+    function s(e){
+
+     setBoardName(e.target.value)
     }
-  };
 
 
-  render() {
-    const { board } = this.props;
-    const { addingList } = this.state;
+      async function handleSubmit(e) {
+          try{
+             e.preventDefault();
+            let resJson = await createBoard(boardName);
+            if (resJson.ok) {
+                console.log(resJson);
+                navigate(`/board/${resJson.id}`)
+            } else {
+                window.alert("could not create new board " + resJson);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+      }
+    
+            
+     
+    
+
 
     return (
-      <DragDropContext onDragEnd={this.handleDragEnd}>
-        <Droppable droppableId="board" direction="horizontal" type="COLUMN">
-          {(provided, _snapshot) => (
-            <div className="Board" ref={provided.innerRef}>
-              {board.lists.map((listId, index) => {
-                return <List listId={listId} key={listId} index={index} />;
-              })}
-
-              {provided.placeholder}
-
-              <div className="Add-List">
-                {addingList ? (
-                  <AddList toggleAddingList={this.toggleAddingList} />
-                ) : (
-                  <div
-                    onClick={this.toggleAddingList}
-                    className="Add-List-Button"
-                  >
-                    <ion-icon name="add" /> Add a list
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
-    );
-  }
+                <form onSubmit={handleSubmit}>
+                  <label>Enter a board name:
+                <input 
+                 type="text" onChange={(e)=>setBoardName(e.target.value)}/></label>
+                <button id="btn-create-board" >create a Board</button></form>
+    )
 }
+    
 
-const mapStateToProps = state => ({ board: state.board });
 
-export default connect(mapStateToProps)(Board);
+
+
+export default Board;
