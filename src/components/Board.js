@@ -28,7 +28,6 @@ useEffect(() => {
    return (
                 <div>
                 <h1>Hello</h1>
-                <button onClick={() =>createTask()}>add new task</button>
                 <button>filter</button>
                 </div>
     )
