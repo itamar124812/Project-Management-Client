@@ -65,9 +65,14 @@ let resBody = await res.json();
 
 
 
- function getBoard() {
+ function getBoard(boardId) {
+  let token = getToken();
   return fetch(serverAddress + "/board/getBoard", {
     method: "GET",
+     headers: {
+        "boardId" : boardId,
+        'Authorization': `bearer ${token}`
+      }
   })
     .then(function (response) {
       if (response.ok) {
@@ -101,4 +106,4 @@ let resBody = await res.json();
 
 
 
-export{createBoard,login,register,addItem}
+export{createBoard,login,register,addItem,getBoard}

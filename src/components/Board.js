@@ -1,55 +1,24 @@
-import "../styles/Board.css";
-import React, { Component } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import {createBoard,addItem} from "../rest"
-import { useState, useEffect } from "react";
-import { serverAddress } from "../constants"
+import {useState,useEffect} from "react";
+import {useParams} from "react-router-dom";
+import {getBoard} from "../rest"
+
+ export const  Board =(props) =>{
+
+const [tasks, setTasks] = useState([]);
+const [users, setUsers] =useState([]);
+const [statuses ,setStatuses ] = useState([]);
+const {boardId} = useParams();
 
 
-
-export const Board = () => {
-        const navigate = useNavigate();
-
-
-      const [boardName, setBoardName] = useState("");
-
-    function s(e){
-
-     setBoardName(e.target.value)
-    }
+    useEffect(() => {
+        async function init() {
+        let users = await getBoard(boardId); 
+        } 
+        init();
+       
+    }, []);
+        console.log(boardId)
 
 
-      async function handleSubmit(e) {
-          try{
-             e.preventDefault();
-            let resJson = await createBoard(boardName);
-            if (resJson.ok) {
-                console.log(resJson);
-                navigate(`/board/${resJson.id}`)
-            } else {
-                window.alert("could not create new board " + resJson);
-            }
-        } catch (err) {
-            console.log(err);
-        }
-      }
-    
-            
-     
-    
-
-
-    return (
-                <form onSubmit={handleSubmit}>
-                  <label>Enter a board name:
-                <input 
-                 type="text" onChange={(e)=>setBoardName(e.target.value)}/></label>
-                <button id="btn-create-board" >create a Board</button></form>
-    )
 }
-    
 
-
-
-
-export default Board;
