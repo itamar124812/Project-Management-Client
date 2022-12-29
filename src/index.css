@@ -11,3 +11,44 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.taskPresent {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.taskPresent h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.taskPresent p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.taskForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.taskForm input[type="text"],
+.taskForm textarea {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.taskForm input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.taskForm input[type="submit"]:hover {
+  background-color: #45a049;
+}
