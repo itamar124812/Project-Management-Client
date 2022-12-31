@@ -7,6 +7,7 @@ import { GithubUserToServer } from '../appFlow/githubRegister';
 import { Login } from "../appFlow/Login";
 import {Board} from "../components/Board";
 import {Task} from "../components/Task";
+import {FilteredTasksPage} from "../components/FilteredTasksPage"
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         <Route exact path="/register" element={<Register />} />
         <Route path="/registerWithGithub"  element={<GithubUserToServer/>}/>
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/" element={<Login />} />
+      <Route path="board/filtered-tasks" element={FilteredTasksPage} />
+
 
 
       </Routes>

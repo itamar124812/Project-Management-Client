@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Form, useParams,useNavigate } from "react-router-dom";
 import { getBoard, createTask,deleteTask } from "../rest"
 import { Link } from 'react-router-dom';
+import FilterForm from './FilterForm';
+
 
 
 import {Task}  from "./Task";
@@ -49,8 +51,7 @@ export const Board = (props) => {
                 <p className="taskStatus">Type: {task.type}</p>
               </div>
             </form>
-             <button onClick={() => deleteTask(task.id)}>Delete</button>
-
+             <button onClick={() => {deleteTask(boardId,task.id);window.location = `/board/${boardId}`;}}>Delete</button>
           </div>
 
         </li>
@@ -62,15 +63,9 @@ export const Board = (props) => {
     }}>
       <button onClick={handleClick}>Add new Task</button>
     </Link>
-<form id="filter-form">
-  <label for="status">Status:</label>
-  <select name="status" id="status">
-    <option value="all">All</option>
-    <option value="in progress">In progress</option>
-    <option value="complete">Complete</option>
-  </select>
-  <button type="submit">Filter</button>
-</form>  </div>
+              <FilterForm boardId ={boardId}/>
+
+    </div>
   )
 
 }

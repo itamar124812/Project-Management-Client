@@ -131,37 +131,54 @@ async function createTask(task) {
 }
 
 
-async function deleteTask(taskId) {
+ function deleteTask(boardId,taskId) {
   let token = getToken();
 
-  const res = await fetch(serverAddress + "/task/deleteTask/" + taskId, {
+  const res = fetch(serverAddress + "/task/deleteTask/" + taskId, {
     method: "DELETE",
     headers: {
       'Authorization': `bearer ${token}`,
+      'boardId': boardId,
+
     },
   }).then(res => {
     if (!res.ok) {
-    console.log(res)
       throw new Error(res.statusText);
     }
-    return res;
-  }).then(res => res.json())
+    return res.json();
+  }).then(res => res)
   .then(resBody => {
-    resBody.ok = res.ok;
-    if(res.ok)
       return resBody;
-    else return {ok:false,message:resBody};
-  }).catch(error => {
-    console.error(error);
-  });
-
+  })
   return res;
 }
 
 
 
 
+ function filter(boardId, filterFields) {
+  console.log(boardId)
+  console.log(filterFields)
+  let token = getToken();
+
+ return fetch(serverAddress + "/board/filter", {
+    method: "Post",
+    headers: {
+      'Authorization': `bearer ${token}`,
+      'Content-Type': 'application/json',
+      'boardId': boardId,
+
+    },
+    body: JSON.stringify(filterFields)
+    
+  }).then(res => {
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    }
+    return res.json();
+  }).then(res=> res)
+}
 
 
 
-export{createBoard,login,register,createTask,getBoard,deleteTask}
+export{createBoard,login,register,createTask,getBoard,deleteTask,filter}
