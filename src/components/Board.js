@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { Form, useParams,useNavigate } from "react-router-dom";
-import { getBoard, createTask } from "../rest"
+import { getBoard, createTask,deleteTask } from "../rest"
+import { Link } from 'react-router-dom';
+
+
 import {Task}  from "./Task";
 export const Board = (props) => {
 
@@ -27,10 +30,17 @@ export const Board = (props) => {
     console.log(tasks);
   }, [tasks]);
 
+  const handleClick  = async(e) => {
+ 
+    }
+
   return (
+    
+
     <div>
+
       <ul>{tasks && tasks.map(
-        (task, index) => <li className="message-li" key={index}>
+        (task, index) => <li className="tasks-li" key={index}>
           <div className="task">
             <form className="taskForm">
               <h3 className="taskTitle">{task.title}</h3>
@@ -38,13 +48,21 @@ export const Board = (props) => {
               <div className="taskDetails">
                 <p className="taskDueDate">Due date: {task.dueDate}</p>
                 <p className="taskStatus">Status: {task.status}</p>
-                <p className="taskStatus">Status: {task.type}</p>
+                <p className="taskStatus">Type: {task.type}</p>
               </div>
+
             </form>
           </div>
+
         </li>
       )}</ul>
-      <button onClick={() => Task(boardId)}>add new task</button>
+        
+            <Link to={{
+      pathname: '/task',
+      search: `?boardId=${boardId}`
+    }}>
+      <button onClick={handleClick}>Add new Task</button>
+    </Link>
       <button>filter</button>
     </div>
   )

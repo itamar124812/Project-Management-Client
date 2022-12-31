@@ -12,9 +12,17 @@ code {
     monospace;
 }
 .task {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin-bottom: 20px;
+  position: relative;
+  cursor: pointer;
+  background: white;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 0 rgba(9, 45, 66, 0.25);
+  font-size: 15px;
+  overflow-wrap: break-word;
+  min-height: 18px;
 }
 
 .taskForm {
@@ -53,3 +61,4 @@ code {
 .taskStatus {
   font-weight: bold;
 }
+

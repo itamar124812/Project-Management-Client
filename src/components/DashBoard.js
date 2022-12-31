@@ -5,16 +5,13 @@ import {createBoard,addItem} from "../rest"
 import { useState, useEffect } from "react";
 import { serverAddress } from "../constants"
 
-
-
 export const DashBoard = () => {
         const navigate = useNavigate();
       const [boardName, setBoardName] = useState("");
-    function s(e){
 
+    function s(e){
      setBoardName(e.target.value)
     }
-
 
       async function handleSubmit(e) {
           try{

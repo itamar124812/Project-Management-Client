@@ -13,7 +13,7 @@ function App() {
     <div className='App'>
     <Router>
       <Routes>
-          <Route exact path="/task" element={<Task/>} />
+          <Route exact path="/task/" element={<Task/>} />
         <Route exact path="/board" element={<DashBoard/>} />
         <Route exact path="/board/:boardId" element={<Board/>} />
         <Route exact path="/register" element={<Register />} />

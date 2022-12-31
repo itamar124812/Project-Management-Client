@@ -2,9 +2,9 @@ import { serverAddress } from "./constants";
 import { getToken } from "./useLocalStorage";
 
 
-function register(username,email,password)
+async function register(username,email,password)
 {
-const res= fetch(`${serverAddress}/register`, {
+const res= await fetch(`${serverAddress}/register`, {
     method: 'POST',
     body: JSON.stringify({
         username: username,
@@ -84,31 +84,84 @@ let resBody = await res.json();
     });
 }
 
+async function createTask(task) {
+  let token = getToken();
+  const requestBody = {
+    title: task.title,
+    description: task.description,
+    importance: task.importance,
+    status: task.status,
+    type: task.type
+  };
+  console.log(requestBody);
+  console.log(task.boardId);
 
- function createTask(task){
-   let token = getToken();
-  return fetch(serverAddress + "/task/addTask", {
+  let res = await fetch(serverAddress + "/task/addTask", {
     method: "Post",
-     headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `bearer ${token}`,
-        'boardId':task.boardId
-      }
-    ,body:task
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `bearer ${token}`,
+      'boardId': task.boardId,
+    },
+    body: JSON.stringify(requestBody),
   })
-    .then(function (response) {
-      if (response.ok) {
-        return response.json();
+    .then((res) => {
+      if (res.ok) {
+        console.log(res)
+        return res.text();
+      }
+      throw new Error(res.statusText);
+    })
+    .then((resBody) => {
+      try {
+        resBody = JSON.parse(resBody);
+      } catch (e) {
+        // resBody is not a valid JSON object
+      }
+      resBody.ok = res.ok;
+      if (res.ok) {
+        return resBody;
+      } else {
+        return { ok: false, message: resBody };
       }
     })
-    .then(function (data) {
-      return data;
+    .catch((error) => {
+      console.error(error);
     });
- }
+}
+
+
+async function deleteTask(taskId) {
+  let token = getToken();
+
+  const res = await fetch(serverAddress + "/task/deleteTask/" + taskId, {
+    method: "DELETE",
+    headers: {
+      'Authorization': `bearer ${token}`,
+    },
+  }).then(res => {
+    if (!res.ok) {
+    console.log(res)
+      throw new Error(res.statusText);
+    }
+    return res;
+  }).then(res => res.json())
+  .then(resBody => {
+    resBody.ok = res.ok;
+    if(res.ok)
+      return resBody;
+    else return {ok:false,message:resBody};
+  }).catch(error => {
+    console.error(error);
+  });
+
+  return res;
+}
 
 
 
 
 
 
-export{createBoard,login,register,createTask,getBoard}
+
+export{createBoard,login,register,createTask,getBoard,deleteTask}
