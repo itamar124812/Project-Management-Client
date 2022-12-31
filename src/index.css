@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
@@ -60,5 +61,9 @@ code {
 
 .taskStatus {
   font-weight: bold;
+}
+
+.tasks-li {
+  display: inline-block;
 }
 

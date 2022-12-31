@@ -33,12 +33,14 @@ export const DashBoard = () => {
     
 
 
-    return (
+    return (    <div>
+                <h1>Hello </h1>
                 <form onSubmit={handleSubmit}>
                   <label>Enter a board name:
                 <input 
                  type="text" onChange={(e)=>setBoardName(e.target.value)}/></label>
                 <button id="btn-create-board" >create a Board</button></form>
+</div>
     )
 }
     

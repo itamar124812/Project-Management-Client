@@ -35,8 +35,6 @@ export const Board = (props) => {
     }
 
   return (
-    
-
     <div>
 
       <ul>{tasks && tasks.map(
@@ -50,8 +48,9 @@ export const Board = (props) => {
                 <p className="taskStatus">Status: {task.status}</p>
                 <p className="taskStatus">Type: {task.type}</p>
               </div>
-
             </form>
+             <button onClick={() => deleteTask(task.id)}>Delete</button>
+
           </div>
 
         </li>
@@ -63,8 +62,15 @@ export const Board = (props) => {
     }}>
       <button onClick={handleClick}>Add new Task</button>
     </Link>
-      <button>filter</button>
-    </div>
+<form id="filter-form">
+  <label for="status">Status:</label>
+  <select name="status" id="status">
+    <option value="all">All</option>
+    <option value="in progress">In progress</option>
+    <option value="complete">Complete</option>
+  </select>
+  <button type="submit">Filter</button>
+</form>  </div>
   )
 
 }
