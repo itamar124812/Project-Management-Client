@@ -21,9 +21,13 @@ const [type, setType] = useState('');
      e.preventDefault();
     let task = {title: title, description: description, importance: parseInt(importance, 10), type: type, status: status,boardId:boardId};
     createTask(task)
+  .then(() => {
+    // Navigate to the board page after the task has been created
+    window.location = `/board/${boardId}`;
+  });
+    
 }
    return (
-
                  <div>    
                   <div className="form">
                 <form className="create-task-form" onSubmit={(e) => handleSubmit(e, boardId)}>
