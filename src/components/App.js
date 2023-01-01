@@ -21,7 +21,8 @@ function App() {
         <Route path="/registerWithGithub"  element={<GithubUserToServer/>}/>
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/" element={<Login />} />
-      <Route path="board/filtered-tasks" element={FilteredTasksPage} />
+        <Route path="/board/filtered-tasks" element={<FilteredTasksPage/>} />
+
 
 
 
