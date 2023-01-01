@@ -66,4 +66,53 @@ code {
 .tasks-li {
   display: inline-block;
 }
+.dashBoardDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boardsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.board {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.boardLink {
+  text-decoration: none;
+  color: black;
+}
+
+.boardNameLabel {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.newBoardNameInput {
+  font-size: 18px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.addBoardButton {
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addBoardButton:hover {
+  background-color: #3e8e41;
+}
+
 

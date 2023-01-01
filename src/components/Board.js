@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { Form, useParams,useNavigate } from "react-router-dom";
+import {  useParams,useNavigate } from "react-router-dom";
 import { getBoard, createTask,deleteTask } from "../rest"
 import { Link } from 'react-router-dom';
 import FilterForm from './FilterForm';
 
 
 
-import {Task}  from "./Task";
 export const Board = (props) => {
 
   const [tasks, setTasks] = useState([]);
@@ -35,6 +34,12 @@ export const Board = (props) => {
   const handleClick  = async(e) => {
  
     }
+    const colorMap = {
+      red: '#FF0000',
+      yellow: '#FFFF00',
+      green: '#00FF00',
+      azure: '#F0FFFF'
+    };
 
   return (
     <div>
@@ -42,13 +47,14 @@ export const Board = (props) => {
       <ul>{tasks && tasks.map(
         (task, index) => <li className="tasks-li" key={index}>
           <div className="task">
-            <form className="taskForm">
+            <form className="taskForm" style={{backgroundColor:colorMap[task.importance]}}>
               <h3 className="taskTitle">{task.title}</h3>
               <p className="taskDescription">{task.description}</p>
               <div className="taskDetails">
-                <p className="taskDueDate">Due date: {task.dueDate}</p>
+                { task.dueDate ? <p className="taskStatus">Due date: {task.dueDate}</p>:<></>} 
                 <p className="taskStatus">Status: {task.status}</p>
                 <p className="taskStatus">Type: {task.type}</p>
+                <p className="taskStatus">importance:{task.importance}</p>
               </div>
             </form>
              <button onClick={() => {deleteTask(boardId,task.id);window.location = `/board/${boardId}`;}}>Delete</button>
