@@ -1,14 +1,18 @@
 import "../styles/Board.css";
-import React, { Component } from "react";
+import React, { Component, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { createBoard, addItem, getAllBoards } from "../rest"
+import { createBoard, addItem, getAllBoards } from "../Utilities/rest"
 import { useState, useEffect } from "react";
+import { getParsedToken } from "../Utilities/useLocalStorage";
+import { openConnection } from "../Utilities/sockets";
+
 
 
 export const DashBoard = () => {
   const navigate = useNavigate();
   const [boardName, setBoardName] = useState("");
   const [boards, setBoards] = useState([]);
+  let userToken=useRef();
 
   useEffect(() => {
     async function init() {
@@ -21,6 +25,8 @@ export const DashBoard = () => {
       else setBoards(getBoards);
     }
     init()
+    userToken.current=getParsedToken()
+    openConnection(userToken.current.userId)
   }, [])
   useEffect(() => {
     console.log(boards)

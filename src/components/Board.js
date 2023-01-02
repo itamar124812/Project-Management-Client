@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import {  useParams,useNavigate } from "react-router-dom";
-import { getBoard, createTask,deleteTask } from "../rest"
+import { getBoard, createTask,deleteTask } from "../Utilities/rest"
 import { Link } from 'react-router-dom';
 import FilterForm from './FilterForm';
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getAllBoards } from "../rest";
+import { getAllBoards } from "../Utilities/rest";
 import { useNavigate } from "react-router-dom";
 let getBoardById;
 let getAll;
@@ -29,7 +29,7 @@ function SetupBoards() {
     function getAllIMP(){
         return boards;
     }
-
+    return boards;
 
 }
 function GetAll()
@@ -43,4 +43,4 @@ function GetBoardById(id){
       return getBoardById(id);
     }
 }
-export {GetBoardById};
+export {GetBoardById,SetupBoards};

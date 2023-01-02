@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { serverAddress } from "../constants"
+import { serverAddress } from "../Utilities/constants"
 // export const Register = (props) => {
 export default function Register() {
     const navigate = useNavigate();

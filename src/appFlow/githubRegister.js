@@ -1,6 +1,6 @@
 import { useEffect,useRef } from "react";
 import { useNavigate,useLocation } from "react-router-dom";
-import { serverAddress } from "../constants";
+import { serverAddress } from "../Utilities/constants";
 
 export  function GithubUserToServer() {
     const effectCalled = useRef(false);
