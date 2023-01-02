@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../rest";
+import { login } from "../Utilities/rest";
 
 
 

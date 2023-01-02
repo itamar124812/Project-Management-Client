@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import {createTask, getBoard,deleteTask} from "../rest"
+import {createTask, getBoard,deleteTask} from "../Utilities/rest"
 import { useLocation } from 'react-router-dom';
 
 

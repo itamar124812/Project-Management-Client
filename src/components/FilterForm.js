@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { filter } from '../rest';
-import {  useNavigate,Link } from 'react-router-dom';
+import { filter } from '../Utilities/rest';
+import { useHistory } from 'react-router-dom';
 import {FilteredTasksPage} from './FilteredTasksPage';
 
 
