@@ -6,6 +6,7 @@ import {FilteredTasksPage} from './FilteredTasksPage';
 
 
 const FilterForm = (props) => {
+  const navigate = useNavigate();
   const board = props.boardId;
 
 
@@ -14,12 +15,15 @@ const FilterForm = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const filterFields = { [field]:value };
-    const filteredTasks =filter(board,filterFields).then(result => {
-       <FilteredTasksPage filteredTasks={filteredTasks}/>
-    window.location = `/board/filtered-tasks`;})}
+    filter(board,filterFields).then(result => {
+      console.log(result);
+     navigate("/board/filtered-tasks",{ state: { data: result } })
+
+    })}
 
 
-  return (
+
+  return ( 
     <form onSubmit={handleSubmit}>
       <label htmlFor="field">Field:</label>
       <input
